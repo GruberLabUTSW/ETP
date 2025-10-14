@@ -53,9 +53,7 @@ Inputs:  A folder with per-core TIFFs. Filenames are case-insensitive and may co
            ...
 
 Outputs:
-  - Excel: per-core Intensity (0–3), Distribution (0–3), Composite (product 0–9), plus QC metrics
-  - Text:  per-case descriptions (Observation, Intensity, Distribution, Composite)
-  - Logs:  notes/warnings for missing channels, likely-empty tissue, etc.
+  - Excel: per-core Intensity (0–3), Distribution (0–3), Composite (product 0–9)
 
 All scoring rules (thresholds, aliases, exclusions) are set via YAML (see params_etp.yaml).
 
@@ -124,21 +122,16 @@ A folder of per-core images saved as TIFF/PNG/JPEG. Files must start with a grid
 
 Output files.
 
-- `PerCore_ETP_scoring_PRODUCT.xlsx` — Case, Tissue Type, Intensity (0–3), Distribution (0–3), Composite (product 0–9), QC metrics.
-- `PerCore_ETP_case_descriptions.txt` — One block per case with a brief observation and scores.
+- `PerCore_ETP_scoring_PRODUCT.xlsx` — Case, Intensity (0–3), Distribution (0–3), Composite (product 0–9).
 
 How to run
 
 ```bash
-# 1) install deps (python >=3.9)
+# 1) install deps (python = 3.8)
 pip install -r requirements.txt
 
 # 2) run on a folder of TIFFs
-python scorer_etp.py \
+python 2025_10_10_scorer_etp.py \
   --input ./cores \
   --params params_etp.yaml \
   --out-xlsx PerCore_ETP_scoring_PRODUCT.xlsx \
-  --out-desc PerCore_ETP_case_descriptions.txt \
-  --exclude exclude_cases.txt
-
-
