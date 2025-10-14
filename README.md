@@ -31,6 +31,6 @@ maximum composite score is 9
 
 Scoring proceeds through 4 steps:
 1. Normalization of all pixels to scale 0 to 1, based on highest pixel reading (eg. 255 for 8 bit)
-2. Intensity scoring by setting all 0 value pixels to NA and then taking mean of all remaining pixels that have >= 95% intensity (focus on brightest areas)
-3. Distribution scoring of mean normalized pixel value that is greater than user-defined threshold value
+2. Intensity values calculated by setting all 0 value pixels to NA, taking the 95th percentile value (focus on brightest areas), and scoring between 1-3 based on user-defined values
+3. Distribution values calculated using mean normalized pixel value that is greater than user-defined threshold value and scored between 1-2 based on user-defined values
 4. Computation of composite score by [intensity score] x [distribution score] = [composite score]
