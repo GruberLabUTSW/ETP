@@ -1,4 +1,4 @@
-# ETP
+## ETP
 Analysis of endotrophin immunofluorescence staining in human tissues
 
 Python 3 script created by Bethania Santos and Lavanya Vumma in the Gruber Lab at UT Southwestern
@@ -59,50 +59,53 @@ Outputs:
 
 All scoring rules (thresholds, aliases, exclusions) are set via YAML (see params_etp.yaml).
 
-# Case IDs: A–N followed by 1–8, at the start of the filename
+Case IDs: A–N followed by 1–8, at the start of the filename
 case_regex: "^([A-N][1-8])\\b"
 
-# How to recognize modalities from filenames (case-insensitive, word-boundary matches)
+How to recognize modalities from filenames (case-insensitive, word-boundary matches)
 modality_aliases:
   red:       ["red", "etp"]
   blue:      ["blue", "dapi", "nuc", "nuclei"]
   composite: ["composite", "merge", "merged", "comp"]
 
-# Intensity thresholds (based on mean red / max) set in params file
+Intensity thresholds (based on mean red / max) set in params file
 intensity_thresholds:
   none:  0.04   # < 0.04 → 0
   weak:  0.16   # 0.04–<0.16 → 1
   moder: 0.40   # 0.16–<0.40 → 2
-  # ≥0.40 → 3
+  strong: ≥0.40 → 3
 
-# A pixel is ETP+ if red_norm > threshold, set in params file
+A pixel is ETP+ if red_norm > threshold, set in params file
 red_positive_fraction_threshold: 0.12
 
-# Distribution bin edges (fractions of tissue area), set in params file
-# < 0.05 → 0; [0.05, 0.25) → 1; [0.25, 0.50) → 2; ≥ 0.50 → 3
+Distribution bin edges (fractions of tissue area), set in params file
+  none: < 0.05 → 0; 
+  weak: [0.05, 0.25) → 1; 
+  moderate: [0.25, 0.50) → 2; 
+  strong: ≥ 0.50 → 3
 distribution_bins: [0.05, 0.25, 0.50]
 
-# Heuristic flag for likely empty cores (does not change score; adds a note)
+Heuristic flag for likely empty cores (does not change score; adds a note), set in params
 blue_mean_tissue_min: 0.02
 red_positive_fraction_min: 0.01
 
-# Hard excludes (optional); will be merged with exclude_cases.txt if present
+Hard excludes (optional); will be merged with exclude_cases.txt if present, set in params
 exclude_cases: []
 
 3)	exclude_cases.txt 
 
-# One case ID per line (A–N + 1–8). Lines starting with # are ignored.
-# Example:
-# C1
-# H1
-# J1
-# A2
-# K2
-# D3
-# H4
-# J5
-# B7
-# N7
+One case ID per line (A–N + 1–8). Lines starting with # are ignored.
+Example:
+C1
+H1
+J1
+A2
+K2
+D3
+H4
+J5
+B7
+N7
 
 4)	requirements / dependencies
 
@@ -113,15 +116,19 @@ PyYAML>=6.0
 
 5)	Tutorial
 
-# Per-core scoring of endotrophin (ETP) immunofluorescence
+Per-core scoring of endotrophin (ETP) immunofluorescence
 
-**Inputs.** A folder of per-core images saved as TIFF/PNG/JPEG. Files must start with a grid case ID (e.g., `A1`, `B6`, `N8`). Red (ETP) and Blue (DAPI) images may be single-channel or RGB; if RGB, the red/blue planes are used automatically. A composite image is optional.
+Inputs.
 
-**Output files.**
+A folder of per-core images saved as TIFF/PNG/JPEG. Files must start with a grid case ID (e.g., `A1`, `B6`, `N8`). Red (ETP) and Blue (DAPI) images may be single-channel or RGB; if RGB, the red/blue planes are used automatically. A composite image is optional.
+
+Output files.
+
 - `PerCore_ETP_scoring_PRODUCT.xlsx` — Case, Tissue Type, Intensity (0–3), Distribution (0–3), Composite (product 0–9), QC metrics.
 - `PerCore_ETP_case_descriptions.txt` — One block per case with a brief observation and scores.
 
-**How to run**
+How to run
+
 ```bash
 # 1) install deps (python >=3.9)
 pip install -r requirements.txt
