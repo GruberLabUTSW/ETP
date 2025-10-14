@@ -127,10 +127,7 @@ Output files.
 How to run
 
 ```bash
-# 1) install deps (python = 3.8)
-pip install -r requirements.txt
-
-# 2) run on a folder of TIFFs
+# 1) run on a folder of TIFFs (python = 3.8)
 python 2025_10_10_scorer_etp.py \
   --input ./cores \
   --params params_etp.yaml \
