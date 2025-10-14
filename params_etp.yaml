@@ -1,0 +1,29 @@
+# Case IDs: A–N followed by 1–8, at the start of the filename
+case_regex: "^([A-N][1-8])\\b"
+
+# How to recognize modalities from filenames (case-insensitive, word-boundary matches)
+modality_aliases:
+  red:       ["red", "etp"]
+  blue:      ["blue", "nuc", "nuclei"]
+  composite: ["composite", "dapi", "merged", "comp"]
+
+# Intensity thresholds (based on mean red / max)
+intensity_thresholds:
+  none:  0.04   # < 0.04 → 0
+  weak:  0.16   # 0.04–<0.16 → 1
+  moder: 0.40   # 0.16–<0.40 → 2
+  # ≥0.40 → 3
+
+# A pixel is ETP+ if red_norm > threshold
+red_positive_fraction_threshold: 0.06
+
+# Distribution bin edges (fractions of tissue area)
+# < 0.05 → 0; [0.05, 0.25) → 1; [0.25, 0.50) → 2; ≥ 0.50 → 3
+distribution_bins: [0.05, 0.25, 0.50]
+
+# Heuristic flag for likely empty cores (does not change score; adds a note)
+blue_mean_tissue_min: 0.02
+red_positive_fraction_min: 0.01
+
+# Hard excludes (optional); will be merged with exclude_cases.txt if present
+exclude_cases: []
