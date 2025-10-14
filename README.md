@@ -74,7 +74,7 @@ intensity_thresholds:
   strong: ≥0.40 → 3
 
 A pixel is ETP+ if red_norm > threshold, set in params file
-red_positive_fraction_threshold: 0.12
+red_positive_fraction_threshold: 0.06
 
 Distribution bin edges (fractions of tissue area), set in params file
   none: < 0.05 → 0; 
