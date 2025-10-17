@@ -41,7 +41,7 @@ Scoring proceeds through 4 steps:
 Test Images
 
 Test images that are scored with this script can be found at our Zenodo repository. 
-https://zenodo.org/records/17353936?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjA5YTE2OTQ2LTZmNGEtNGEyZC1hZDczLWY4ZTgzZGJlYWE0YiIsImRhdGEiOnt9LCJyYW5kb20iOiI5Y2I0ODFlYmIxZmM1ZGJiYjgwZDFhMjhhNDIxYjhkMiJ9.bc2AV9abHr4drdv7NcgOW0IRTNyyrcCvaBNeG8-B97bMNlg0FWdOQFPQvRwFi3WGfth_a3IXFnknBaMixEou1Q 
+https://doi.org/10.5281/zenodo.17353935
 
 
 Usage Instructions
